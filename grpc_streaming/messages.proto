@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package messages;
+
+
+message SingleWordMessage {
+	string word = 1;
+}
+
+service MessageServices {
+	rpc GetMostLengthString(stream SingleWordMessage) returns (stream SingleWordMessage) {}
+}
