@@ -2,11 +2,20 @@ syntax = "proto3";
 
 package messages;
 
-
 message SingleWordMessage {
 	string word = 1;
 }
 
+message SinglePersonMessage {
+    string name = 1;
+    int32 idade = 2;
+}
+
+message SingleOverAgeMessage {
+    string message = 1;
+}
+
 service MessageServices {
-	rpc GetMostLengthString(stream SingleWordMessage) returns (stream SingleWordMessage) {}
+    rpc CheckIfOverAge(stream SinglePersonMessage) returns (stream SingleOverAgeMessage) {}
+    rpc GetMostLengthString(stream SingleWordMessage) returns (stream SingleWordMessage) {}
 }

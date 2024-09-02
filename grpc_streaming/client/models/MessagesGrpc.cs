@@ -46,7 +46,19 @@ namespace Messages {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Messages.SinglePersonMessage> __Marshaller_messages_SinglePersonMessage = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Messages.SinglePersonMessage.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Messages.SingleOverAgeMessage> __Marshaller_messages_SingleOverAgeMessage = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Messages.SingleOverAgeMessage.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Messages.SingleWordMessage> __Marshaller_messages_SingleWordMessage = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Messages.SingleWordMessage.Parser));
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Messages.SinglePersonMessage, global::Messages.SingleOverAgeMessage> __Method_CheckIfOverAge = new grpc::Method<global::Messages.SinglePersonMessage, global::Messages.SingleOverAgeMessage>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "CheckIfOverAge",
+        __Marshaller_messages_SinglePersonMessage,
+        __Marshaller_messages_SingleOverAgeMessage);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Messages.SingleWordMessage, global::Messages.SingleWordMessage> __Method_GetMostLengthString = new grpc::Method<global::Messages.SingleWordMessage, global::Messages.SingleWordMessage>(
@@ -66,6 +78,12 @@ namespace Messages {
     [grpc::BindServiceMethod(typeof(MessageServices), "BindService")]
     public abstract partial class MessageServicesBase
     {
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task CheckIfOverAge(grpc::IAsyncStreamReader<global::Messages.SinglePersonMessage> requestStream, grpc::IServerStreamWriter<global::Messages.SingleOverAgeMessage> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task GetMostLengthString(grpc::IAsyncStreamReader<global::Messages.SingleWordMessage> requestStream, grpc::IServerStreamWriter<global::Messages.SingleWordMessage> responseStream, grpc::ServerCallContext context)
       {
@@ -102,6 +120,16 @@ namespace Messages {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Messages.SinglePersonMessage, global::Messages.SingleOverAgeMessage> CheckIfOverAge(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CheckIfOverAge(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Messages.SinglePersonMessage, global::Messages.SingleOverAgeMessage> CheckIfOverAge(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_CheckIfOverAge, null, options);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncDuplexStreamingCall<global::Messages.SingleWordMessage, global::Messages.SingleWordMessage> GetMostLengthString(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetMostLengthString(new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -125,6 +153,7 @@ namespace Messages {
     public static grpc::ServerServiceDefinition BindService(MessageServicesBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_CheckIfOverAge, serviceImpl.CheckIfOverAge)
           .AddMethod(__Method_GetMostLengthString, serviceImpl.GetMostLengthString).Build();
     }
 
@@ -135,6 +164,7 @@ namespace Messages {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, MessageServicesBase serviceImpl)
     {
+      serviceBinder.AddMethod(__Method_CheckIfOverAge, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Messages.SinglePersonMessage, global::Messages.SingleOverAgeMessage>(serviceImpl.CheckIfOverAge));
       serviceBinder.AddMethod(__Method_GetMostLengthString, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Messages.SingleWordMessage, global::Messages.SingleWordMessage>(serviceImpl.GetMostLengthString));
     }
 
